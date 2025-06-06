@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+    <head>
+        <meta charset="UTF-8">
+        <title>Resume Matcher</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body
+        class="bg-gray-900 text-white min-h-screen flex items-center justify-center">
+        <div class="w-full max-w-4xl bg-gray-800 p-8 rounded-xl shadow-lg">
+            <h1 class="text-3xl font-bold mb-6 text-center">Resume Matcher</h1>
+
+            <!-- Upload Form -->
+            <form action="/match" method="post" enctype="multipart/form-data"
+                class="space-y-4" id="uploadForm">
+                <div>
+                    <label class="block mb-2">Job Description</label>
+                    <textarea name="job_description" required
+                        class="w-full p-2 rounded bg-gray-700 text-white"
+                        style="height: 160px;"></textarea>
+                </div>
+                <div>
+                    <label class="block mb-2">Upload Resume(s)</label>
+                    <input type="file" name="resumes" id="resumeInput" multiple
+                        accept=".pdf" required
+                        class="w-full bg-gray-700 text-white rounded p-2">
+                    <ul id="fileList"
+                        class="mt-2 text-sm text-gray-300 list-disc list-inside"></ul>
+                </div>
+                <button type="submit"
+                    class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Match Resumes
+                </button>
+            </form>
+
+            <!-- Match Results -->
+            {% if results is defined and results|length > 0 %}
+
+            <h2 class="text-xl font-bold mt-8 mb-4">Matching Results</h2>
+            <div class="overflow-auto rounded bg-gray-700 p-4">
+                <table
+                    class="w-full text-sm text-left text-white border border-gray-600">
+                    <thead class="text-xs uppercase bg-gray-600 text-white">
+                        <tr>
+                            <th class="px-4 py-2">Candidate</th>
+                            <th class="px-4 py-2">Match Score</th>
+                            <th class="px-4 py-2">Skills Matched</th>
+                            <th class="px-4 py-2">Skills Missing</th>
+                            <th class="px-4 py-2">Feedback</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in results %}
+                        <tr class="border-b border-gray-600">
+                            <td class="px-4 py-2">{{ row.candidate }}</td>
+                            <td class="px-4 py-2">{{ row.match_score }}</td>
+                            <td class="px-4 py-2">{{ row.skills_matched }}</td>
+                            <td class="px-4 py-2">{{ row.skills_missing }}</td>
+                            <td class="px-4 py-2">{{ row.feedback }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-4 text-center">
+                <a href="/download"
+                    class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                    Download Excel
+                </a>
+            </div>
+            {% endif %}
+        </div>
+
+        <script>
+    const input = document.getElementById('resumeInput');
+    const fileList = document.getElementById('fileList');
+
+    input.addEventListener('change', () => {
+      fileList.innerHTML = '';
+      for (const file of input.files) {
+        const li = document.createElement('li');
+        li.textContent = file.name;
+        fileList.appendChild(li);
+      }
+    });
+  </script>
+    </body>
+</html>
