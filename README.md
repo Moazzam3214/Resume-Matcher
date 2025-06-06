@@ -50,7 +50,7 @@ resume-matcher/
 Clone the repository:
 
 ```sh
-git clone https://github.com/yourusername/resume-matcher.git
+git clone https://github.com/moazzam3214/resume-matcher.git
 cd resume-matcher
 ```
 
@@ -153,6 +153,7 @@ Contributions are welcome! To contribute:
 6. Open a Pull Request
 
 **Areas for Improvement:**
+
 - Add more advanced skill extraction (NER, custom models)
 - Support for DOCX resumes
 - Add authentication and user management
@@ -170,7 +171,6 @@ Contributions are welcome! To contribute:
 - Enhanced LLM feedback with scoring
 
 ---
-
 
 ## 📄 License
 
@@ -190,7 +190,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 📞 Contact
 
-GitHub: [@Moazzam3214](https://github.com/Moazzam3214)  
+GitHub: [@Moazzam3214](https://github.com/Moazzam3214)
 Email: moazzamaleem786@gmail.com
 LinkedIn: [Muhammad Moazzam](https://www.linkedin.com/in/muhammad-moazzam-492b0724b/)
 
