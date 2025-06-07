@@ -6,12 +6,12 @@ An AI-powered web application that matches candidate resumes to job descriptions
 
 ## 🎯 Features
 
-- **AI-Powered Resume Matching:** Uses sentence embeddings and semantic similarity to rank resumes against job descriptions.
-- **Skill Extraction:** Identifies and matches technical and soft skills using spaCy and custom skill lists.
-- **LLM Feedback:** Integrates Google Gemini to provide concise, actionable resume feedback.
-- **Batch Resume Upload:** Upload multiple PDF resumes at once for bulk matching.
-- **Excel Export:** Download ranked results as an Excel file for further analysis.
-- **Modern Web Interface:** FastAPI backend with a Tailwind CSS-powered frontend.
+* **AI-Powered Resume Matching:** Uses sentence embeddings and semantic similarity to rank resumes against job descriptions.
+* **Skill Extraction:** Identifies and matches technical and soft skills using spaCy and custom skill lists.
+* **LLM Feedback:** Integrates Google Gemini to provide concise, actionable resume feedback.
+* **Batch Resume Upload:** Upload multiple PDF resumes at once for bulk matching.
+* **Excel Export:** Download ranked results as an Excel file for further analysis.
+* **Modern Web Interface:** FastAPI backend with a Tailwind CSS-powered frontend.
 
 ---
 
@@ -38,7 +38,9 @@ resume-matcher/
 │   └── utils/
 │       ├── __init__.py
 │       └── helpers.py           # NLP, skill extraction, Excel export
+├── .dockerignore
 ├── .gitignore
+├── Dockerfile                   # Make Docker image
 ├── requirements.txt
 ├── expirements.ipynb            # Experiments and prototyping
 ```
@@ -96,18 +98,40 @@ uvicorn app.main:app --reload
 
 Open your browser and navigate to [http://localhost:8000](http://localhost:8000)
 
-- Paste a job description and upload one or more PDF resumes.
-- Click "Match Resumes" to see ranked results, skill matches, and LLM feedback.
-- Download the results as an Excel file.
+* Paste a job description and upload one or more PDF resumes.
+* Click "Match Resumes" to see ranked results, skill matches, and LLM feedback.
+* Download the results as an Excel file.
+
+---
+
+## 🐳 Docker Setup (Optional)
+
+Make sure Docker is installed on your system.
+
+Build the image:
+
+```sh
+docker build -t resume-matcher .
+```
+
+Run the container:
+
+```sh
+docker run -p 8000:8000 -e GOOGLE_API_KEY=your-api-key resume-matcher
+```
+
+Then visit [http://localhost:8000](http://localhost:8000) in your browser.
+
+> The `.dockerignore` file is used to exclude unnecessary files like virtual environments and cache from the image to improve build performance.
 
 ---
 
 ## 🧠 How It Works
 
-- **Skill Extraction:** Uses spaCy PhraseMatcher and semantic similarity to extract and match skills from resumes and job descriptions.
-- **Semantic Matching:** Computes cosine similarity between sentence embeddings (via Sentence Transformers) of resumes and job descriptions.
-- **LLM Feedback:** Sends resume and job description to Gemini for brief, actionable feedback.
-- **Excel Export:** Results are saved as `ranked_resumes.xlsx` for download.
+* **Skill Extraction:** Uses spaCy PhraseMatcher and semantic similarity to extract and match skills from resumes and job descriptions.
+* **Semantic Matching:** Computes cosine similarity between sentence embeddings (via Sentence Transformers) of resumes and job descriptions.
+* **LLM Feedback:** Sends resume and job description to Gemini for brief, actionable feedback.
+* **Excel Export:** Results are saved as `ranked_resumes.xlsx` for download.
 
 ---
 
@@ -127,15 +151,15 @@ print(results_df)
 
 ## 📋 Requirements
 
-- Python 3.9+
-- FastAPI
-- Uvicorn
-- spaCy (`en_core_web_sm`)
-- sentence-transformers
-- openpyxl
-- pandas
-- google-generativeai
-- Jinja2
+* Python 3.9+
+* FastAPI
+* Uvicorn
+* spaCy (`en_core_web_sm`)
+* sentence-transformers
+* openpyxl
+* pandas
+* google-generativeai
+* Jinja2
 
 See `requirements.txt` for details.
 
@@ -154,21 +178,21 @@ Contributions are welcome! To contribute:
 
 **Areas for Improvement:**
 
-- Add more advanced skill extraction (NER, custom models)
-- Support for DOCX resumes
-- Add authentication and user management
-- Improve LLM prompt engineering
-- Add REST API endpoints for programmatic access
+* Add more advanced skill extraction (NER, custom models)
+* Support for DOCX resumes
+* Add authentication and user management
+* Improve LLM prompt engineering
+* Add REST API endpoints for programmatic access
 
 ---
 
 ## 📈 Future Enhancements
 
-- Multi-language support
-- Customizable skill lists per job
-- Real-time feedback and analytics dashboard
-- Integration with ATS and HR platforms
-- Enhanced LLM feedback with scoring
+* Multi-language support
+* Customizable skill lists per job
+* Real-time feedback and analytics dashboard
+* Integration with ATS and HR platforms
+* Enhanced LLM feedback with scoring
 
 ---
 
@@ -180,18 +204,18 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 🙏 Acknowledgments
 
-- [spaCy](https://spacy.io/)
-- [Sentence Transformers](https://www.sbert.net/)
-- [Google Gemini](https://ai.google.dev/)
-- [FastAPI](https://fastapi.tiangolo.com/)
-- Open source community
+* [spaCy](https://spacy.io/)
+* [Sentence Transformers](https://www.sbert.net/)
+* [Google Gemini](https://ai.google.dev/)
+* [FastAPI](https://fastapi.tiangolo.com/)
+* Open source community
 
 ---
 
 ## 📞 Contact
 
 GitHub: [@Moazzam3214](https://github.com/Moazzam3214)
-Email: moazzamaleem786@gmail.com
+Email: [moazzamaleem786@gmail.com](mailto:moazzamaleem786@gmail.com)
 LinkedIn: [Muhammad Moazzam](https://www.linkedin.com/in/muhammad-moazzam-492b0724b/)
 
 ⭐ Star this repository if you found it helpful!
